@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mock API Website">
+  <title>Dịch Vụ Mock API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Dịch Vụ Mock API</h1>
+    <p>Tạo API của bạn bên dưới:</p>
+
+    <!-- Trường nhập liệu -->
+    <textarea id="apiData" placeholder="Nhập dữ liệu JSON..." rows="10"></textarea>
+    <button id="createApiBtn">Tạo API</button>
+
+    <!-- Kết quả -->
+    <div id="result" class="hidden">
+      <p>API của bạn đã sẵn sàng:</p>
+      <a id="apiLink" href="#" target="_blank">Xem API</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
