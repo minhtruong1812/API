@@ -51,19 +51,31 @@
             { "title": "We Wish You a Merry Christmas", "url": "https://files.catbox.moe/x2d0bn.mp3" }
         ];
 
-        // Chọn ngẫu nhiên một bài hát từ danh sách
-        const randomSong = musicList[Math.floor(Math.random() * musicList.length)];
+        // Hàm để chọn bài hát ngẫu nhiên và cập nhật giao diện
+        function updateSong() {
+            // Chọn ngẫu nhiên một bài hát từ danh sách
+            const randomSong = musicList[Math.floor(Math.random() * musicList.length)];
 
-        // Cập nhật giao diện với bài hát ngẫu nhiên
-        document.getElementById("title").textContent = randomSong.title;
-        document.getElementById("url").textContent = randomSong.url;
-        document.getElementById("url").href = randomSong.url;
-        document.getElementById("total").textContent = musicList.length;
-        document.getElementById("length").textContent = randomSong.title.length;
+            // Cập nhật giao diện với bài hát ngẫu nhiên
+            document.getElementById("title").textContent = randomSong.title;
+            document.getElementById("url").textContent = randomSong.url;
+            document.getElementById("url").href = randomSong.url;
+            document.getElementById("total").textContent = musicList.length;
+            document.getElementById("length").textContent = randomSong.title.length;
 
-        // Cập nhật audio player
-        document.getElementById("audio-source").src = randomSong.url;
-        document.getElementById("player").load();
+            // Cập nhật audio player
+            document.getElementById("audio-source").src = randomSong.url;
+            document.getElementById("player").load();
+            document.getElementById("player").play();
+        }
+
+        // Lắng nghe sự kiện 'ended' để chuyển bài khi bài hát kết thúc
+        document.getElementById("player").addEventListener("ended", function() {
+            updateSong(); // Cập nhật và phát bài tiếp theo khi bài hát kết thúc
+        });
+
+        // Khởi động với bài hát đầu tiên
+        updateSong();
     </script>
 </body>
 </html>
