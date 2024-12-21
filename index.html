@@ -1,28 +1,69 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mock API Website">
-  <title>Dịch Vụ Mock API</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Christmas Song</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff;
+            text-align: center;
+            padding-top: 50px;
+        }
+        #song-info {
+            background: #ffffff;
+            padding: 20px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Dịch Vụ Mock API</h1>
-    <p>Tạo API của bạn bên dưới:</p>
-
-    <!-- Trường nhập liệu -->
-    <textarea id="apiData" placeholder="Nhập dữ liệu JSON..." rows="10"></textarea>
-    <button id="createApiBtn">Tạo API</button>
-
-    <!-- Kết quả -->
-    <div id="result" class="hidden">
-      <p>API của bạn đã sẵn sàng:</p>
-      <a id="apiLink" href="#" target="_blank">Xem API</a>
+    <h1>Random Christmas Song</h1>
+    <div id="song-info">
+        <p><strong>Title:</strong> <span id="title">Loading...</span></p>
+        <p><strong>Music URL:</strong> <a id="url" href="#" target="_blank">Loading...</a></p>
+        <p><strong>Total Tracks:</strong> <span id="total">Loading...</span></p>
+        <p><strong>Title Length:</strong> <span id="length">Loading...</span></p>
+        <audio id="player" controls style="margin-top: 10px;">
+            <source id="audio-source" src="#" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script>
+        // Danh sách các bài nhạc Giáng sinh
+        const musicList = [
+            { "title": "Last Christmas", "url": "https://files.catbox.moe/bbdt54.mp3" },
+            { "title": "Jingle Bells", "url": "https://files.catbox.moe/ks700d.mp3" },
+            { "title": "Lemon Tree", "url": "https://files.catbox.moe/rg9mym.mp3" },
+            { "title": "Feliz Navidad", "url": "https://files.catbox.moe/9reiim.mp3" },
+            { "title": "We Wish You a Merry Christmas", "url": "https://files.catbox.moe/x2d0bn.mp3" }
+        ];
+
+        // Chọn ngẫu nhiên một bài hát từ danh sách
+        const randomSong = musicList[Math.floor(Math.random() * musicList.length)];
+
+        // Cập nhật giao diện với bài hát ngẫu nhiên
+        document.getElementById("title").textContent = randomSong.title;
+        document.getElementById("url").textContent = randomSong.url;
+        document.getElementById("url").href = randomSong.url;
+        document.getElementById("total").textContent = musicList.length;
+        document.getElementById("length").textContent = randomSong.title.length;
+
+        // Cập nhật audio player
+        document.getElementById("audio-source").src = randomSong.url;
+        document.getElementById("player").load();
+    </script>
 </body>
 </html>
